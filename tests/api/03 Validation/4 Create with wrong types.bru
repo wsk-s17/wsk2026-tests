@@ -1,0 +1,32 @@
+meta {
+  name: Create with wrong types
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/notes
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "title": 123,
+    "body": true
+  }
+}
+
+tests {
+  test("status 400", function () {
+    expect(res.status).to.equal(400);
+  });
+
+  test("body is {\"message\":\"Validation failed\",\"errors\":{\"title\":\"invalid\",\"body\":\"invalid\"}}", function () {
+    expect(res.body).to.eql({"message":"Validation failed","errors":{"title":"invalid","body":"invalid"}});
+  });
+}

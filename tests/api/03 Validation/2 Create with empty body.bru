@@ -1,0 +1,29 @@
+meta {
+  name: Create with empty body
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/notes
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {}
+}
+
+tests {
+  test("status 400", function () {
+    expect(res.status).to.equal(400);
+  });
+
+  test("body is {\"message\":\"Validation failed\",\"errors\":{\"title\":\"required\"}}", function () {
+    expect(res.body).to.eql({"message":"Validation failed","errors":{"title":"required"}});
+  });
+}

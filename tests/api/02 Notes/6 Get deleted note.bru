@@ -1,0 +1,25 @@
+meta {
+  name: Get deleted note
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/notes/{{noteId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+tests {
+  test("status 404", function () {
+    expect(res.status).to.equal(404);
+  });
+
+  test("body is {\"message\":\"Note not found\"}", function () {
+    expect(res.body).to.eql({"message":"Note not found"});
+  });
+}

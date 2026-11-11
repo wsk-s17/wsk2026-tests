@@ -1,0 +1,25 @@
+meta {
+  name: Notes with invalid token
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/notes
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: invalid-token
+}
+
+tests {
+  test("status 401", function () {
+    expect(res.status).to.equal(401);
+  });
+
+  test("body is {\"message\":\"Unauthenticated\"}", function () {
+    expect(res.body).to.eql({"message":"Unauthenticated"});
+  });
+}

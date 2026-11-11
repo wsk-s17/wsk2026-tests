@@ -1,0 +1,10 @@
+{
+  "name": "api-tests",
+  "private": true,
+  "scripts": {
+    "test": "bru run --env Local"
+  },
+  "devDependencies": {
+    "@usebruno/cli": "^4.3.0"
+  }
+}

@@ -1,0 +1,26 @@
+meta {
+  name: Get note
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/notes/{{noteId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+tests {
+  test("status 200", function () {
+    expect(res.status).to.equal(200);
+  });
+
+  test("returns the same note", function () {
+    expect(res.body.id).to.equal(bru.getVar("noteId"));
+    expect(res.body.title).to.equal("Shopping list");
+  });
+}

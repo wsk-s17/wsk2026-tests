@@ -1,0 +1,11 @@
+{
+  "name": "spa-tests",
+  "private": true,
+  "scripts": {
+    "test": "cypress run",
+    "open": "cypress open"
+  },
+  "devDependencies": {
+    "cypress": "^14.5.4"
+  }
+}

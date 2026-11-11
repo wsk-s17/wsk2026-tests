@@ -1,0 +1,40 @@
+{
+  "terms": [
+    {
+      "id": "html",
+      "term": "HTML",
+      "category": "Frontend",
+      "definition": "Markup language that describes the structure of a web page."
+    },
+    {
+      "id": "css",
+      "term": "CSS",
+      "category": "Frontend",
+      "definition": "Style sheet language that describes how HTML elements look."
+    },
+    {
+      "id": "dom",
+      "term": "DOM",
+      "category": "Frontend",
+      "definition": "Tree of objects that the browser builds from HTML. Scripts read and change it."
+    },
+    {
+      "id": "http",
+      "term": "HTTP",
+      "category": "Backend",
+      "definition": "Protocol for sending requests and responses between a browser and a server."
+    },
+    {
+      "id": "rest",
+      "term": "REST",
+      "category": "Backend",
+      "definition": "Style of API where resources have addresses and are changed with HTTP methods."
+    },
+    {
+      "id": "cookie",
+      "term": "Cookie",
+      "category": "Backend",
+      "definition": "Small piece of data that the server asks the browser to store and send back."
+    }
+  ]
+}

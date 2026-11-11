@@ -1,0 +1,25 @@
+meta {
+  name: Login without fields
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {}
+}
+
+tests {
+  test("status 400", function () {
+    expect(res.status).to.equal(400);
+  });
+
+  test("body is {\"message\":\"Validation failed\",\"errors\":{\"email\":\"required\",\"password\":\"required\"}}", function () {
+    expect(res.body).to.eql({"message":"Validation failed","errors":{"email":"required","password":"required"}});
+  });
+}

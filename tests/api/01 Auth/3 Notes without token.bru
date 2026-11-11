@@ -1,0 +1,21 @@
+meta {
+  name: Notes without token
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/notes
+  body: none
+  auth: none
+}
+
+tests {
+  test("status 401", function () {
+    expect(res.status).to.equal(401);
+  });
+
+  test("body is {\"message\":\"Unauthenticated\"}", function () {
+    expect(res.body).to.eql({"message":"Unauthenticated"});
+  });
+}

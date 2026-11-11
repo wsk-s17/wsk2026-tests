@@ -1,0 +1,39 @@
+meta {
+  name: Create note
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/notes
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "title": "Shopping list",
+    "body": "Milk, bread"
+  }
+}
+
+script:post-response {
+  bru.setVar("noteId", res.body.id);
+}
+
+tests {
+  test("status 201", function () {
+    expect(res.status).to.equal(201);
+  });
+
+  test("returns the note", function () {
+    expect(res.body.id).to.be.a("number");
+    expect(res.body.title).to.equal("Shopping list");
+    expect(res.body.body).to.equal("Milk, bread");
+    expect(res.body.createdAt).to.be.a("string");
+  });
+}

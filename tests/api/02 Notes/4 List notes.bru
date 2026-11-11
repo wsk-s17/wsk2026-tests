@@ -1,0 +1,26 @@
+meta {
+  name: List notes
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/notes
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+tests {
+  test("status 200", function () {
+    expect(res.status).to.equal(200);
+  });
+
+  test("new note is first in the list", function () {
+    expect(res.body).to.be.an("array");
+    expect(res.body[0].id).to.equal(bru.getVar("noteId"));
+  });
+}
